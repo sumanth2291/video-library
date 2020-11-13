@@ -1,0 +1,26 @@
+{
+  "name": "videolibrary-app",
+  "version": "1.0.0",
+  "description": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumanth2291/nodejs.git"
+  },
+  "keywords": [
+    "video",
+    "movies",
+    "nodejs",
+    "mongodb",
+    "heroku"
+  ],
+  "author": "Sumanth Ramanujapuram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumanth2291/nodejs/issues"
+  },
+  "homepage": "https://github.com/sumanth2291/nodejs#readme"
+}
