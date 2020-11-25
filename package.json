@@ -1,5 +1,5 @@
 {
-  "name": "videolibrary-app",
+  "name": "videolibrary",
   "version": "1.0.0",
   "description": "0.0.0",
   "main": "index.js",
@@ -22,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/sumanth2291/nodejs/issues"
   },
-  "homepage": "https://github.com/sumanth2291/nodejs#readme"
+  "homepage": "https://github.com/sumanth2291/nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.14"
+  },
+  "devDependencies": {
+    "jshint": "^2.12.0"
+  }
 }
