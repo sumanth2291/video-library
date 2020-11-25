@@ -1,4 +1,5 @@
 const express = require("express");
+const Joi = require("joi");
 const app = express();
 app.use(express.json());
 
@@ -10,7 +11,7 @@ const courses = [
 ];
 
 app.get("/", (req, res) => {
-  res.send("Hey Howdy!!!!!!!!!!!!!!!, This is the root.");
+  res.send("Hey, This is the root of the application.");
 });
 
 app.get("/api/courses", (req, res) => {
@@ -32,6 +33,30 @@ app.post("/api/courses", (req, res) => {
   };
   courses.push(course);
   res.send(courses);
+});
+
+app.put("/api/courses/:id", (req, res) => {
+  // Find the course if it exists. If not return 404
+  const course = courses.find((course) => {
+    return course.id === parseInt(req.params.id);
+  });
+  if (!course)
+    return res
+      .status(404)
+      .send(`The course with id:${req.params.id}does not exists`);
+
+  // Validate the course, if not valid return 400 Bad request
+  const schema = Joi.object({
+    name: Joi.string().min(3).required(),
+  });
+
+  const result = schema.validate({ name: req.body.name });
+  if (result.error)
+    return res.status(400).send(result.error.details[0].message);
+
+  // Update the course
+  course.name = req.body.name;
+  res.send(course);
 });
 
 app.listen(port, () => {
