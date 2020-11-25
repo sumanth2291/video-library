@@ -43,7 +43,7 @@ app.put("/api/courses/:id", (req, res) => {
   if (!course)
     return res
       .status(404)
-      .send(`The course with id:${req.params.id}does not exists`);
+      .send(`The course with id: ${req.params.id} does not exists`);
 
   // Validate the course, if not valid return 400 Bad request
   const schema = Joi.object({
@@ -57,6 +57,24 @@ app.put("/api/courses/:id", (req, res) => {
   // Update the course
   course.name = req.body.name;
   res.send(course);
+});
+
+app.delete("/api/courses/:id", (req, res) => {
+  // Find the course if it exists. If not return 404
+  const course = courses.find((course) => {
+    return course.id === parseInt(req.params.id);
+  });
+  if (!course)
+    return res
+      .status(404)
+      .send(`The course with id: ${req.params.id} does not exists`);
+
+  // Delete the course
+  const index = courses.indexOf(course);
+  courses.splice(index, 1);
+
+  // Return response
+  res.send(courses);
 });
 
 app.listen(port, () => {
