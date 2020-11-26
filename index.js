@@ -74,7 +74,7 @@ app.delete("/api/courses/:id", (req, res) => {
   courses.splice(index, 1);
 
   // Return response
-  res.send(courses);
+  res.send(course);
 });
 
 app.listen(port, () => {
