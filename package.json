@@ -1,10 +1,11 @@
 {
-  "name": "videolibrary",
+  "name": "video-library",
   "version": "1.0.0",
   "description": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "nodemon videoService.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/sumanth2291/nodejs#readme",
   "dependencies": {
+    "config": "^3.3.3",
     "express": "^4.17.1",
     "joi": "^17.3.0",
     "mongoose": "^5.10.14"
