@@ -1,14 +1,20 @@
 // Create an Express server
 const express = require("express");
-const logger = require("./logger");
+const Logger = require("./logger");
+const logger = new Logger();
 const auth = require("./authenticator");
 const Joi = require("Joi");
 const app = express();
 const port = 8000;
 
 app.use(express.json()); // Adding a middleware for request processing
-app.use(logger);
-app.use(auth);
+// app.use(auth);
+
+logger.on('logMessage', (arg) => {
+  console.log('Listener called', arg);
+})
+
+logger.log("The log method in Logger class is running...")
 
 app.get("/", (req, res) => {
   res.send("This is the root page of Video Library service");
