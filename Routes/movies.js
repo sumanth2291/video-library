@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
   const result = validateMovies.validate({
     title: req.body.title,
     genreId: req.body.genreId,
-    numbeInStock: req.body.numbeInStock,
+    numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
   });
 
@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
       _id: genre._id,
       genre: genre.genre,
     },
-    numbeInStock: req.body.numbeInStock,
+    numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
   });
 
@@ -47,7 +47,7 @@ router.put("/:id", async (req, res) => {
     req.params.id,
     {
       title: req.body.title,
-      numbeInStock: req.body.numbeInStock,
+      numberInStock: req.body.numberInStock,
       dailyRentalRate: req.body.dailyRentalRate,
     },
     { new: true }
