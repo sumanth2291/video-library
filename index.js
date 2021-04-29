@@ -4,11 +4,13 @@ const app = express();
 const port = process.env.PORT || 8000;
 const home = require("./routes/home");
 const genres = require("./routes/genres");
+const customers = require("./routes/customers");
 
 // Adding a middleware for request processing
 app.use(express.json());
 app.use("/", home);
 app.use("/api/genres", genres);
+app.use("/api/customers", customers);
 
 mongoose
   .connect("mongodb://localhost/VideoDatabase", { useNewUrlParser: true })
