@@ -1,20 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const { Genre, schema } = require("../models/genres");
+const { Genre, validateGenres } = require("../models/genres");
 
 // Write Server application methods
 
 // Read
 router.get("/", async (req, res) => {
-  const genres = await Genre.find().sort("name");
+  const genres = await Genre.find().sort("genre");
   res.send(genres);
 });
 
 // Create
 router.post("/", async (req, res) => {
-  let genre = new Genre({ name: req.body.name, genre: req.body.genre });
-  const result = schema.validate({
-    name: req.body.name,
+  let genre = new Genre({ genre: req.body.genre });
+  const result = validateGenres.validate({
     genre: req.body.genre,
   });
 
@@ -30,7 +29,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const genre = await Genre.findByIdAndUpdate(
     req.params.id,
-    { name: req.body.name },
+    { genre: req.body.genre },
     { new: true }
   );
 

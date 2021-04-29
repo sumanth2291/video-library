@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Customer, schema } = require("../models/customers");
+const { Customer, validateCustomers } = require("../models/customers");
 
 // Write Server application methods
 
@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
     phone: req.body.phone,
     isGold: req.body.isGold,
   });
-  const result = schema.validate({
+  const result = validateCustomers.validate({
     name: req.body.name,
     phone: req.body.phone,
     isGold: req.body.isGold,
